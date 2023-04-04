@@ -1,7 +1,10 @@
 package vn.gotech.gpt_v1;
 
 import android.annotation.SuppressLint;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -69,6 +72,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
     } // OnCreate Method End Here ================
+
+    public static final String SETTINGS_PACKAGE = "com.android.settings";
+    public static final String HOTSPOT_SETTINGS_CLASS = "com.android.settings.TetherSettings";
+    public void WifiHotspot(View view){
+        final Intent intent = new Intent(Intent.ACTION_MAIN, null);
+        final ComponentName componentName  = new ComponentName(SETTINGS_PACKAGE, HOTSPOT_SETTINGS_CLASS);
+        intent.setComponent(componentName );
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity( intent);
+    }
 
     void addToChat (String message, String sendBy){
         runOnUiThread(new Runnable() {

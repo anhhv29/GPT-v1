@@ -7,21 +7,35 @@
     android:background="@android:color/white"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
+    <RelativeLayout
+        android:id="@+id/top_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/toolbar"
-        android:background="@android:color/white"
-        android:elevation="4dp"
-        app:title="@string/app_name"
-        />
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignBottom="@+id/toolbar"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/wifi"
+            android:onClick="WifiHotspot" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:elevation="4dp"
+            app:title="@string/app_name" />
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@id/toolbar"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottom_layout"
+        android:layout_below="@id/top_layout"
+        android:layout_marginBottom="1dp"
         android:scrollbars="none" />
 
     <RelativeLayout
@@ -53,5 +67,4 @@
             android:src="@drawable/ic_send" />
 
     </RelativeLayout>
-
 </RelativeLayout>
